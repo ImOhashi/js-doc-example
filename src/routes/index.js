@@ -8,11 +8,14 @@ import httpStatusCode from "../enum/http-status-code.js";
  * @class
  */
 class Routes {
+    
   /**
    * @constructor
    */
   constructor() {
     this.router = express.Router();
+
+    this.configRoutes();
   }
 
   /**
@@ -34,3 +37,5 @@ class Routes {
     });
   }
 }
+
+export default new Routes().router;
