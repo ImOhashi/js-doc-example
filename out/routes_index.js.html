@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: app.js</title>
+    <title>JSDoc: Source: routes/index.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: app.js</h1>
+    <h1 class="page-title">Source: routes/index.js</h1>
 
     
 
@@ -27,47 +27,41 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import express from "express";
-import morgan from "morgan";
+
+import httpStatusCode from "../enum/http-status-code.js";
 
 /**
- * @author Leonardo Ohashi &lt;leonardoohashi.mkt@gmail.com>
- *
- * A main configuration class
+ * A main class to ser router configuration and service paths
  *
  * @class
  */
-class App {
+class Routes {
   /**
    * @constructor
    */
   constructor() {
-    this.app = express();
-
-    this.middlewares();
+    this.router = express.Router();
   }
 
   /**
-   * Set all middlewares of server application
+   * Config server routes and details path
    *
    * @private
-   * @memberof App
-   * @method middlewares
+   * @memberof Routes
+   * @method configRoutes
    * @returns {void}
    */
-  middlewares() {
-    this.app.use(express.json({ limit: "50mb" }));
-    this.app.use(
-      express.urlencoded({
-        parameterLimit: 100000,
-        limit: "50mb",
-        extended: false,
-      })
-    );
-    this.app.use(morgan(":method :url :response-time"));
+  configRoutes() {
+    this.router.use("/details", (req, res) => {
+      return res.status(httpStatusCode.OK).json({
+        version: process.env.npm_package_version,
+        author: process.env.npm_package_author_name,
+        email: process.env.npm_package_author_email,
+        repository_url: process.env.npm_package_repository_url,
+      });
+    });
   }
 }
-
-export default new App().app;
 </code></pre>
         </article>
     </section>
