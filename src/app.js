@@ -1,7 +1,9 @@
 import express from "express";
 import morgan from "morgan";
+import dotenv from "dotenv";
 
 import router from "./routes/index.js";
+import Database from "./database/database.js";
 
 /**
  * @author Leonardo Ohashi <leonardoohashi.mkt@gmail.com>
@@ -17,6 +19,9 @@ class App {
   constructor() {
     this.app = express();
 
+    dotenv.config();
+
+    Database.connect();
     this.middlewares();
   }
 
