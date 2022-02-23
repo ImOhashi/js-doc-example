@@ -37,7 +37,7 @@ export default class BaseRepository {
    * @async
    * @memberof BaseRepository
    * @method getAll
-   * @returns {[object]}
+   * @returns {object[]}
    */
   async getAll() {
     return this.model.find();
