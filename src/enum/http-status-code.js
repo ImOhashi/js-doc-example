@@ -4,6 +4,6 @@
  * @readonly
  * @enum {number}
  */
-export default httpStatus = {
+export default {
   OK: 200,
 };

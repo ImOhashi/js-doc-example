@@ -8,7 +8,6 @@ import httpStatusCode from "../enum/http-status-code.js";
  * @class
  */
 class Routes {
-    
   /**
    * @constructor
    */

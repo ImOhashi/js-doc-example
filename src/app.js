@@ -1,6 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 
+import router from "./routes/index.js";
+
 /**
  * @author Leonardo Ohashi <leonardoohashi.mkt@gmail.com>
  *
@@ -35,7 +37,10 @@ class App {
         extended: false,
       })
     );
-    this.app.use(morgan(":method :url :response-time"));
+    this.app.use(
+      morgan(":method :url :status :res[content-length] - :response-time ms")
+    );
+    this.app.use(router);
   }
 }
 
