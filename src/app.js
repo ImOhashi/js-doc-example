@@ -20,7 +20,6 @@ class App {
     this.app = express();
 
     dotenv.config();
-
     Database.connect();
     this.middlewares();
   }
