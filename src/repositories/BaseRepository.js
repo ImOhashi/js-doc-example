@@ -56,4 +56,23 @@ export default class BaseRepository {
   async create(model) {
     return this.model.create(model);
   }
+
+  /**
+   * Update a document by id
+   *
+   * @public
+   * @async
+   * @memberof BaseRepository
+   * @method update
+   * @param {string} id
+   * @param {object} model
+   * @returns {object}
+   */
+  async update(id, model) {
+    return this.model.findOneAndUpdate(
+      { _id: id },
+      { $set: model },
+      { new: true, returnOriginal: false }
+    );
+  }
 }
