@@ -42,4 +42,18 @@ export default class BaseRepository {
   async getAll() {
     return this.model.find();
   }
+
+  /**
+   * Create a new document
+   *
+   * @public
+   * @async
+   * @memberof BaseRepository
+   * @method create
+   * @param {object} model
+   * @returns {object}
+   */
+  async create(model) {
+    return this.model.create(model);
+  }
 }
