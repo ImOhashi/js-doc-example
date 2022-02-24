@@ -75,4 +75,18 @@ export default class BaseRepository {
       { new: true, returnOriginal: false }
     );
   }
+
+  /**
+   * Delete a document by id
+   *
+   * @public
+   * @async
+   * @memberof BaseRepository
+   * @method delete
+   * @param {string} id
+   * @returns {object}
+   */
+  async delete(id) {
+    return this.model.findOneAndDelete({ _id: id });
+  }
 }
